@@ -1,0 +1,102 @@
+#include <string.h> 
+#include <conio.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <locale.h> 
+
+int c; 
+struct veiculo
+{ 
+char modelo[20]; 
+char marca[20]; 
+int ano; 
+char placa[20];
+
+};
+
+ int main() 
+ { 
+ int opcao, i, anov; 
+ char modelov[20]; 
+ struct veiculo carro[10]; 
+ setlocale(LC_ALL, "Portuguese"); 
+ printf("\n\n++++Cadastro de Veiculos++++\n"); 
+ printf("\nDigite o número de uma das opções\n"); 
+ printf("\n1 Cadastrar veículo\n"); 
+ printf("2 Listar veiculos\n"); 
+ printf("3 Listar veiculos por ano\n"); 
+ printf("4 Listar veiculos por modelo\n"); 
+ printf("5 Listar acima do ano X\n"); 
+ printf("0 Sair\n\n"); 
+ do 
+  { 
+  printf("\nDigite uma opção: "); 
+  scanf("%d", &opcao); 
+  printf("\n"); 
+  switch(opcao) 
+  {  
+   case 1: 
+   if (c < 10)      
+    { 
+	printf("-->Cadastrar Veículo.\n"); 
+	printf("Digite a marca do veículo:");
+	scanf("%s",  carro[c].marca); 
+	printf("Digite o modelo do veículo:"); 
+	scanf("%s", carro[c].modelo); 
+	printf("Digite o ano do veículo: "); 
+	scanf("%d", &carro[c].ano); 
+	printf("Digite a placa do veículo:"); 
+	scanf("%s", carro[c].placa); 
+	c++; 
+	printf("%d O Veículo foi cadastrado!!!\n\n",  c); 
+	} 
+	else { 
+	printf("Não podem ser cadastrados mais de 10 veículos.");
+	} 
+	break;  
+	case 2:
+	 printf("-->Veículos cadastrados\n");
+	 for (i = 0; i < c; i++)
+	  { 
+	  printf("%s %s %d %s \n",  carro[i].marca, carro[i].modelo, carro[i].ano, carro[i].placa);
+	   }; 
+	break;
+	case 3: 
+	printf("Digite o ano do veículo: "); 
+	scanf("%d", &anov); 
+	for(i = 0; i < c; i++){ 
+	
+	 if(carro[i].ano == anov){ 
+	 
+	  printf("%s %s %d %s  \n", carro[i].marca, carro[i].modelo, carro[i].ano, carro[i].placa); 
+	  } 
+	  }; 
+	  break; 
+	  case 4: 
+	  printf("Digite o modelo do veículo: "); 
+	  scanf("%s", modelov); 
+	  for(i = 0; i < c; i++) 
+	  {
+	  	
+	  if (strcmp (carro[i].modelo, modelov)== 0) 
+	  { 
+	  
+	  printf("%s %s %d %s \n", carro[i].marca,carro[i].modelo,carro[i].ano,carro[i].placa);
+}
+};
+break;
+case 5:
+	printf("Digite o ano do veículo:");
+	scanf("%d", &anov);
+	for(i = 0; i < c; i++)
+	{
+		if(carro[i].ano > anov)
+		{
+			printf("%s %s %d %s \n", carro[i].marca,carro[i].modelo,carro[i].ano,carro[i].placa);
+		}
+	};
+	break;
+};
+} while(opcao !=0);
+return 0;
+	}
